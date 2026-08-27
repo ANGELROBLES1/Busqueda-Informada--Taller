@@ -1,6 +1,8 @@
 # BusquedaInformada
 
-<img width="570" height="387" alt="image" src="https://github.com/user-attachments/assets/5676ab36-256a-43ff-ae93-f250c2783a83" />
+- <img width="570" height="387" alt="image" src="https://github.com/user-attachments/assets/5676ab36-256a-43ff-ae93-f250c2783a83" />
+
+
 | Elemento | Descripción | Código |
 |---|---|---|
 | Estado | La configuración completa del juego: posición de Pac-Man, posición de fantasmas, comida y cápsulas restantes, y *score*. | Clase `GameState`, archivo `pacman.py`, línea 41. |
