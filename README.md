@@ -23,3 +23,6 @@
 | Nodos expandidos | 32 |
 | Tiempo | 0.0 s |
 
+- <img width="1102" height="680" alt="image" src="https://github.com/user-attachments/assets/85ffe3b6-b86d-4205-ba2b-ddcbbe3dac98" />
+- <img width="976" height="147" alt="image" src="https://github.com/user-attachments/assets/bbd417e6-189d-4c66-9ae3-65775a6aebf2" />
+
