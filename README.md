@@ -23,7 +23,7 @@
 | Longitud del camino | 30 | Coincide exactamente con el costo porque cada acción individual (North/South/East/West) tiene `stepCost = 1`; no hay acciones con costo distinto en este problema, así que “número de pasos” y “costo acumulado” tienen el mismo valor. |
 | Nodos expandidos | 32 | UCS expande el nodo de menor `g(n)` en cada iteración, explorando primero los estados más cercanos al inicio en términos de costo. Como no usa ninguna heurística que oriente la búsqueda hacia la meta, expande algunos nodos “de más” (32 en vez de 30) antes de confirmar cuál es el camino óptimo; esto es normal en una búsqueda no informada. |
 | Tiempo | 0.0 s | El programa redondea el tiempo a un decimal (`%.1f` segundos en `searchAgents.py`). Como el laberinto es pequeño (solo 32 nodos expandidos), la búsqueda tomó menos de 0.05 segundos reales —del orden de milisegundos—, por lo que al redondear se muestra como 0.0. No significa que la búsqueda fuera instantánea, sino que fue demasiado rápida para la precisión del formato de impresión. |
-| Tiempo | 0.0 s |
+
 
 - <img width="1102" height="680" alt="image" src="https://github.com/user-attachments/assets/85ffe3b6-b86d-4205-ba2b-ddcbbe3dac98" />
 - <img width="976" height="147" alt="image" src="https://github.com/user-attachments/assets/bbd417e6-189d-4c66-9ae3-65775a6aebf2" />
