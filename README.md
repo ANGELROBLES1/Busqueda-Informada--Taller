@@ -11,3 +11,15 @@
 | Función sucesora | Dado un estado y una acción válida, genera el nuevo estado: mueve a Pac-Man, actualiza comida comida, mueve fantasmas. | Método `generateSuccessor(agentIndex, action)`, `pacman.py`, línea 71. |
 | Objetivo | Que no quede comida en el tablero (`isWin`) sin haber sido atrapado por un fantasma (`isLose`). | Métodos `isWin()` en línea 187 e `isLose()` en línea 184 de `pacman.py`. La comida restante se consulta con `getNumFood()` (línea 151) y `getFood()` (línea 154). |
 | Costo | Cada movimiento cuesta 1 punto (`TIME_PENALTY`); ganar suma 500 y ser atrapado resta 500. | Constante `TIME_PENALTY = 1` en línea 240; penalización aplicada en línea 90 (`scoreChange += -TIME_PENALTY`); bono de victoria `+500` en línea 349; penalización de derrota `-500` en línea 424, todo en `pacman.py`. |
+
+
+## 2. Actividad 2. Búsqueda de costo uniforme
+- <img width="791" height="375" alt="image" src="https://github.com/user-attachments/assets/53cf2c12-ab4c-4e1b-bbb8-87c4c6265368" />
+
+| Métrica | Resultado |
+|---|---:|
+| Costo del camino | 30 |
+| Longitud del camino | 30 |
+| Nodos expandidos | 32 |
+| Tiempo | 0.0 s |
+
