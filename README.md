@@ -1,3 +1,11 @@
 # BusquedaInformada
 
 <img width="570" height="387" alt="image" src="https://github.com/user-attachments/assets/5676ab36-256a-43ff-ae93-f250c2783a83" />
+| Elemento | Descripción | Código |
+|---|---|---|
+| Estado | La configuración completa del juego: posición de Pac-Man, posición de fantasmas, comida y cápsulas restantes, y *score*. | Clase `GameState`, archivo `pacman.py`, línea 41. |
+| Estado inicial | Estado con el que arranca el juego: Pac-Man en su posición de *spawn*, toda la comida presente, fantasmas en su posición inicial. | Se genera en `Game/GameState` a partir del *layout* leído; es visible al inicio de la ejecución de `python pacman.py`. |
+| Acciones | Los cuatro movimientos posibles: North, South, East, West (y Stop). | Clase `Directions`, archivo `game.py`, líneas 33–38. Las acciones legales en cada estado se obtienen con `getLegalActions()`, `pacman.py`, línea 60. |
+| Función sucesora | Dado un estado y una acción válida, genera el nuevo estado: mueve a Pac-Man, actualiza comida comida, mueve fantasmas. | Método `generateSuccessor(agentIndex, action)`, `pacman.py`, línea 71. |
+| Objetivo | Que no quede comida en el tablero (`isWin`) sin haber sido atrapado por un fantasma (`isLose`). | Métodos `isWin()` en línea 187 e `isLose()` en línea 184 de `pacman.py`. La comida restante se consulta con `getNumFood()` (línea 151) y `getFood()` (línea 154). |
+| Costo | Cada movimiento cuesta 1 punto (`TIME_PENALTY`); ganar suma 500 y ser atrapado resta 500. | Constante `TIME_PENALTY = 1` en línea 240; penalización aplicada en línea 90 (`scoreChange += -TIME_PENALTY`); bono de victoria `+500` en línea 349; penalización de derrota `-500` en línea 424, todo en `pacman.py`. |
