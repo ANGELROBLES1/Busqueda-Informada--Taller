@@ -29,9 +29,31 @@
 - <img width="876" height="135" alt="image" src="https://github.com/user-attachments/assets/2864eaef-79ec-46f6-99ce-e8cb633ed553" />
 
 
-## 3. Actividad 3– Programando A*
+## 3. Actividad 3 Programando A*
 - <img width="797" height="463" alt="image" src="https://github.com/user-attachments/assets/87bf657f-06fc-4fdf-8eec-b6877f4f5041" />
 - <img width="1357" height="702" alt="image" src="https://github.com/user-attachments/assets/3298bbc4-b299-4c22-bd24-93aad442037a" />
 
 
+## 4. Actividad 4 A* sin información
+- <img width="633" height="366" alt="image" src="https://github.com/user-attachments/assets/ae28fa6f-8fd0-45b4-8932-2541d18d79de" />
+- <img width="873" height="131" alt="image" src="https://github.com/user-attachments/assets/59f323de-790b-49c8-9f43-93f673e376a0" />
+- <img width="1055" height="155" alt="image" src="https://github.com/user-attachments/assets/9392210b-e43d-49ac-9d67-83141fb49242" />
 
+
+| Algoritmo | Costo | Expandidos | Tiempo |
+|---|---:|---:|---:|
+| UCS | 30 | 32 | 0.001290 s |
+| A* con h(n) = 0 | 30 | 32 | 0.001078 s |
+
+### ¿Qué comportamiento observa? Explique por qué A* con h(n) = 0 presenta un comportamiento equivalente o muy similar a búsqueda de costo uniforme
+Cuando la heurística es nula, la fórmula de A* se reduce a:
+
+$$
+f(n) = g(n) + h(n) = g(n) + 0 = g(n)
+$$
+
+Es decir, la prioridad usada por A* para ordenar la frontera de búsqueda queda determinada únicamente por el costo acumulado `g(n)`, exactamente igual que en UCS. Por eso ambos algoritmos expanden los nodos en el mismo orden y llegan al mismo resultado: costo óptimo de **30** y **32 nodos expandidos** en ambos casos.
+
+En esta ejecución, el tiempo de A* (`0.001078 s`) fue ligeramente menor que el de UCS (`0.001290 s`). Esto confirma que la diferencia de tiempo entre ambos algoritmos no es estructural, sino producto de pequeñas variaciones normales del sistema operativo al medir intervalos tan cortos, del orden de milisegundos.
+
+Esto refuerza la conclusión de que, **algorítmicamente, UCS es un caso particular de A* cuando `h(n) = 0`**.
