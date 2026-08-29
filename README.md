@@ -142,3 +142,38 @@ En `mediumMaze`, las tres heurísticas expandieron **32 nodos** y encontraron un
 Las diferencias de tiempo son muy pequeñas y se deben principalmente a variaciones normales del sistema al medir intervalos de milisegundos. Por lo tanto, no demuestran que la heurística Euclidiana sea más eficiente que Manhattan.
 
 En conclusión, **Manhattan es la heurística más adecuada para Pac-Man**, porque representa directamente sus movimientos horizontales y verticales. Aunque en este experimento no redujo el número de nodos expandidos, en laberintos con más ramificaciones se esperaría que proporcionara una mejor orientación y expandiera menos nodos que la distancia Euclidiana.
+
+## 7. Actividad 7 Diseñando el estado
+
+-<img width="957" height="572" alt="image" src="https://github.com/user-attachments/assets/e2802c12-dc1a-49ff-985c-8bc0de92310f" /> 
+
+- <img width="451" height="382" alt="image" src="https://github.com/user-attachments/assets/9187de3e-d8b1-4123-a572-c446d0a9a35e" />
+
+**Laberinto:** `tinyCorners`
+
+**Comando:**
+
+```bash
+python pacman.py -l tinyCorners -p SearchAgent -a fn=ucs,prob=CornersProblem
+```
+
+| Métrica | Resultado |
+|---|---|
+| Costo del camino | 22 |
+| Nodos expandidos | 296 |
+| Tiempo | 0.000805 s |
+| Resultado del juego | Victoria — Score 518 |
+
+### Representación del estado utilizada
+
+```python
+s = (posición, esquinas_visitadas)
+```
+
+Donde posición es una tupla (x, y) y esquinas_visitadas es una tupla de 4 booleanos (uno por cada esquina en self.corners), que indica si esa esquina ya fue visitada. Esto resuelve el problema planteado en la guía: dos estados con la misma posición (5,4) ahora son distinguibles según cuántas esquinas se hayan visitado previamente, evitando que UCS/A* los confunda como el mismo nodo.
+
+Funciones implementadas:
+
+getStartState: posición inicial + (False, False, False, False).
+isGoalState: es meta cuando all(visited) es True, es decir, las 4 esquinas fueron visitadas.
+getSuccessors: por cada movimiento válido, genera un nuevo estado; si la nueva posición coincide con una esquina, la marca como visitada en la tupla, sin alterar las demás.
