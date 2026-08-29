@@ -50,8 +50,3 @@ Para resolver el problema de las cuatro esquinas, el estado se redefine como
 `(posición, esquinas_visitadas)`, donde `esquinas_visitadas` es una tupla de 4 booleanos.
 Esto distingue estados que comparten la misma posición `(x, y)` pero difieren en cuántas
 esquinas ya fueron visitadas.
-
-
-
-**Referencia:** Stanford University, CS221: Artificial Intelligence — Pac-Man Assignment.
-https://stanford-cs221.github.io/spring2023/assignments/pacman/index.html
