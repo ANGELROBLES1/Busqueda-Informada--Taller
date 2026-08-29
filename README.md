@@ -22,7 +22,7 @@
 | Costo del camino | 30 | UCS garantiza encontrar el camino de **menor costo posible**; como cada movimiento cuesta 1 (`TIME_PENALTY = 1`), el costo total equivale al mínimo de pasos necesarios entre inicio y meta. |
 | Longitud del camino | 30 | Coincide con el costo porque cada acción tiene `stepCost = 1`; no hay acciones con costo distinto en este problema. |
 | Nodos expandidos | 32 | UCS expande el nodo de menor `g(n)` en cada iteración, sin ninguna heurística que oriente la búsqueda hacia la meta. Por eso expande algunos nodos “de más” (32 en vez de 30) antes de confirmar el camino óptimo, algo típico de la búsqueda no informada. |
-| Tiempo | 0.000861168 s | Tiempo real medido tras aumentar la precisión de impresión (`%.5f` en `searchAgents.py`). Confirma que la búsqueda fue muy rápida (menos de 1 milisegundo), consistente con lo esperado para un laberinto pequeño de solo 32 nodos. |
+| Tiempo | 0.000861168 s | Tiempo real medido tras aumentar la precisión de impresión (`%.9f` en `searchAgents.py`). Confirma que la búsqueda fue muy rápida (menos de 1 milisegundo), consistente con lo esperado para un laberinto pequeño de solo 32 nodos. |
 
 
 - <img width="1102" height="680" alt="image" src="https://github.com/user-attachments/assets/85ffe3b6-b86d-4205-ba2b-ddcbbe3dac98" />
