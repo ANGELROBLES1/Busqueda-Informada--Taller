@@ -16,6 +16,8 @@
   >
 </p>
 
+La imagen corresponde al estado inicial de la ejecución de CornersProblem sobre el laberinto tinyCorners, antes de iniciar el recorrido calculado por UCS. Se observan cuatro puntos de comida ubicados exactamente en las cuatro esquinas del laberinto (definidas en self.corners), que constituyen el objetivo del problema: Pac-Man debe visitarlas todas para alcanzar el estado meta (isGoalState). El marcador SCORE: 0 confirma que la partida apenas está comenzando, antes de que se ejecuten las 22 acciones del camino óptimo encontrado por el algoritmo.
+
 ### Configuración de la prueba
 
 **Laberinto:** `tinyCorners`
