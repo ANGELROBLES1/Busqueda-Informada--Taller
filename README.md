@@ -29,3 +29,9 @@
 - <img width="876" height="135" alt="image" src="https://github.com/user-attachments/assets/2864eaef-79ec-46f6-99ce-e8cb633ed553" />
 
 
+## 3. Actividad 3– Programando A*
+- <img width="797" height="463" alt="image" src="https://github.com/user-attachments/assets/87bf657f-06fc-4fdf-8eec-b6877f4f5041" />
+- <img width="1357" height="702" alt="image" src="https://github.com/user-attachments/assets/3298bbc4-b299-4c22-bd24-93aad442037a" />
+
+
+
