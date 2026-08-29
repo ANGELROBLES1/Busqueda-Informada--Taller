@@ -54,6 +54,91 @@ $$
 
 Es decir, la prioridad usada por A* para ordenar la frontera de búsqueda queda determinada únicamente por el costo acumulado `g(n)`, exactamente igual que en UCS. Por eso ambos algoritmos expanden los nodos en el mismo orden y llegan al mismo resultado: costo óptimo de **30** y **32 nodos expandidos** en ambos casos.
 
-En esta ejecución, el tiempo de A* (`0.001078 s`) fue ligeramente menor que el de UCS (`0.001290 s`). Esto confirma que la diferencia de tiempo entre ambos algoritmos no es estructural, sino producto de pequeñas variaciones normales del sistema operativo al medir intervalos tan cortos, del orden de milisegundos.
+## 5. Actividad 5 A* con Manhattan
+- <img width="640" height="328" alt="image" src="https://github.com/user-attachments/assets/e76838da-58c9-4f1a-a15c-f4344a66fbac" />
 
+
+| Algoritmo | Costo | Expandidos | Tiempo |
+|---|---:|---:|---:|
+| UCS | 30 | 32 | 0.001415 s |
+| A* + Manhattan | 30 | 32 | 0.001551 s |
+
+## ¿Por qué la distancia Manhattan puede orientar correctamente a Pac-Man aunque la heurística no considere directamente las paredes del laberinto?
+
+La distancia Manhattan se calcula como:
+
+$$
+h_M(n) = |x_n - x_g| + |y_n - y_g|
+$$
+
+Esta fórmula mide cuántos pasos sobre la cuadrícula separan la posición actual de la meta, **sin tener en cuenta si existen paredes en medio**.
+
+A pesar de esto, sigue siendo una heurística **admisible**, porque nunca sobreestima el costo real. El camino verdadero, considerando las paredes, siempre requiere una cantidad de pasos **igual o mayor** que la distancia Manhattan, pero nunca menor.
+
+Esta propiedad permite que A* continúe garantizando una solución óptima, aunque la heurística no tenga información sobre los obstáculos.
+
+Además, aunque ignore las paredes, la heurística sí logra **orientar la dirección general** de la búsqueda. En cada paso, A* prioriza los nodos que parecen estar más cerca de la meta, evitando explorar primero direcciones que se alejan claramente de ella.
+
+Esto permite guiar eficazmente la búsqueda en laberintos con pocos obstáculos grandes, aunque Pac-Man todavía debe rodear las paredes cuando estas bloquean el camino directo.
+
+En este caso particular, utilizando `mediumMaze`, el laberinto tiene una estructura similar a un corredor y posee pocas rutas alternativas. Por esta razón, la distancia Manhattan no logró reducir el número de nodos expandidos frente a UCS: ambos algoritmos expandieron **32 nodos**.
+
+Además, el tiempo de A* fue ligeramente mayor debido al costo adicional de calcular la heurística en cada expansión. Sin embargo, esto no invalida su utilidad, ya que la heurística:
+
+- Mantiene la optimalidad de la solución.
+- Orienta la búsqueda hacia la meta.
+- Puede reducir significativamente los nodos expandidos en laberintos con más ramificaciones o rutas alternativas.
+
+
+En esta ejecución, el tiempo de A* (`0.001078 s`) fue ligeramente menor que el de UCS (`0.001290 s`). Esto confirma que la diferencia de tiempo entre ambos algoritmos no es estructural, sino producto de pequeñas variaciones normales del sistema operativo al medir intervalos tan cortos, del orden de milisegundos.
 Esto refuerza la conclusión de que, **algorítmicamente, UCS es un caso particular de A* cuando `h(n) = 0`**.
+
+## 6. Actividad 6 Comparacion de heuristicas
+- <img width="886" height="650" alt="image" src="https://github.com/user-attachments/assets/f22eae48-9305-4c2a-bae6-f5a9c1268d31" />
+
+
+| Heurística | Longitud | Costo | Expandidos | Tiempo |
+|---|---:|---:|---:|---:|
+| h(n) = 0 | 30 | 30 | 32 | 0.001078 s |
+| Manhattan | 30 | 30 | 32 | 0.001551 s |
+| Euclidiana | 30 | 30 | 32 | 0.000981 s |
+
+## Pac-Man se desplaza únicamente horizontal o verticalmente. ¿Cuál de las dos heurísticas representa mejor este tipo de movimiento? Justifique con los resultados experimentales.
+
+La **distancia Manhattan** representa mejor el movimiento de Pac-Man, ya que se calcula como:
+
+$$
+h_M(n) = |x_n-x_g| + |y_n-y_g|
+$$
+
+Esta fórmula suma los desplazamientos horizontales y verticales, que corresponden exactamente a los movimientos permitidos para Pac-Man: `North`, `South`, `East` y `West`. Pac-Man nunca puede desplazarse diagonalmente.
+
+En cambio, la **distancia Euclidiana** se calcula como:
+
+$$
+h_E(n) = \sqrt{(x_n-x_g)^2+(y_n-y_g)^2}
+$$
+
+Esta heurística mide la distancia en línea recta entre la posición actual y la meta, incluyendo una dirección diagonal que Pac-Man **no puede recorrer directamente**.
+
+En una cuadrícula se cumple que:
+
+$$
+h_E(n) \leq h_M(n)
+$$
+
+Por esta razón, la distancia Euclidiana generalmente subestima más el costo real que la distancia Manhattan. Aunque ambas son heurísticas admisibles, Manhattan es **más informativa** para este problema porque sus valores suelen estar más cerca del costo real sin sobreestimarlo.
+
+### Resultados experimentales
+
+| Heurística | Longitud | Costo | Nodos expandidos | Tiempo |
+|---|---:|---:|---:|---:|
+| `h(n) = 0` | 30 | 30 | 32 | 0.001078 s |
+| Manhattan | 30 | 30 | 32 | 0.001551 s |
+| Euclidiana | 30 | 30 | 32 | 0.000981 s |
+
+En `mediumMaze`, las tres heurísticas expandieron **32 nodos** y encontraron una solución óptima con costo y longitud de **30**. Esto sucede porque el laberinto tiene pocas rutas alternativas, por lo que las heurísticas no tuvieron suficientes oportunidades para evitar exploraciones innecesarias.
+
+Las diferencias de tiempo son muy pequeñas y se deben principalmente a variaciones normales del sistema al medir intervalos de milisegundos. Por lo tanto, no demuestran que la heurística Euclidiana sea más eficiente que Manhattan.
+
+En conclusión, **Manhattan es la heurística más adecuada para Pac-Man**, porque representa directamente sus movimientos horizontales y verticales. Aunque en este experimento no redujo el número de nodos expandidos, en laberintos con más ramificaciones se esperaría que proporcionara una mejor orientación y expandiera menos nodos que la distancia Euclidiana.
