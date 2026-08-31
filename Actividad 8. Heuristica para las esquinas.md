@@ -2,16 +2,17 @@
 
 <p align="center">
   <img
-    src="<img width="870" height="417" alt="image" src="https://github.com/user-attachments/assets/83eb9ee7-6990-4ff7-af29-1d73f17dd88a" />
-"
-    width="700"
-    alt="Implementación de cornersHeuristic"
+    <img width="870" height="417" alt="Captura de pantalla 2026-08-30 185321" src="https://github.com/user-attachments/assets/5cf36c9e-34d1-442a-b359-87df7399ea24" />
+
+
+    
   >
 </p>
 
 <p align="center">
   <img
-    src="URL_DE_TU_CAPTURA_AQUI_2"
+    <img width="910" height="697" alt="image" src="https://github.com/user-attachments/assets/2e1e6159-15a3-42e6-97d1-580632562f8f" />
+
     width="450"
     alt="Ejecución de A* con cornersHeuristic sobre tinyCorners"
   >
